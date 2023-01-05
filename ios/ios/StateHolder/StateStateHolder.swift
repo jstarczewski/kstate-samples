@@ -1,22 +1,22 @@
-   import Foundation
-   import SwiftUI
-   import common
+import Foundation
+import SwiftUI
+import common
 
-   @propertyWrapper
-   struct StateStateHolder<StateHolder>: DynamicProperty where StateHolder: common.KstateStateHolder {
+@propertyWrapper
+struct StateStateHolder<StateHolder>: DynamicProperty where StateHolder: common.KstateStateHolder {
 
-   @StateObject private var stateHolderObservable: ObservableStateHolder<StateHolder>
+    @StateObject private var stateHolderObservable: ObservableStateHolder<StateHolder>
 
-   init(wrappedValue: StateHolder) {
-       _stateHolderObservable = StateObject(wrappedValue: ObservableStateHolder(wrappedValue))
-   }
+    init(wrappedValue: StateHolder) {
+        _stateHolderObservable = StateObject(wrappedValue: ObservableStateHolder(wrappedValue))
+    }
 
-   var wrappedValue: StateHolder {
-       get { return stateHolderObservable.stateHolder }
-       set { stateHolderObservable.stateHolder = newValue }
-   }
+    var wrappedValue: StateHolder {
+        get { return stateHolderObservable.stateHolder }
+        set { stateHolderObservable.stateHolder = newValue }
+    }
 
-   var projectedValue: ObservedObject<ObservableStateHolder<StateHolder>>.Wrapper {
-       self.$stateHolderObservable
-   }
+    var projectedValue: ObservedObject<ObservableStateHolder<StateHolder>>.Wrapper {
+        self.$stateHolderObservable
+    }
 }

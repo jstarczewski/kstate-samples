@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("kotlin-parcelize")
+    id("com.jstarczewski.kstate.generate").version("0.0.2")
 }
 
 kotlin {
@@ -62,4 +63,10 @@ android {
         minSdk = 21
         targetSdk = 33
     }
+}
+
+swiftTemplates {
+
+    outputDir = "../ios/ios/StateHolder"
+    sharedModuleName = "common"
 }

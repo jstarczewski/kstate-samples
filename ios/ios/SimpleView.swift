@@ -9,7 +9,7 @@ struct SimpleView: View {
 	var body: some View {
         Text("First \(viewModel.message)")
             .onTapGesture {
-                move = !move
+                viewModel.updateMessage()
             }
 	}
 }
