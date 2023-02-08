@@ -8,7 +8,7 @@ android {
     compileSdk = 33
     defaultConfig {
         applicationId = "com.jstarczewski.kmm.android"
-        minSdk = 21
+        minSdk = 24
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":common"))
+    implementation(project(":feature:saveable"))
     implementation("androidx.compose.ui:ui:1.3.1")
     implementation("androidx.compose.ui:ui-tooling:1.3.1")
     implementation("androidx.compose.ui:ui-tooling-preview:1.3.1")
