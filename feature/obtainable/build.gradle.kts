@@ -1,41 +1,29 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("kotlin-parcelize")
-    id("com.jstarczewski.kstate.generate").version("0.0.3")
 }
 
 kotlin {
     android()
-
+    
     listOf(
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "common"
-            export(project(":feature:saveable"))
-            export(project(":feature:obtainable"))
+            baseName = "obtainable"
         }
     }
 
     sourceSets {
-        val commonTest by getting
-        val commonMain by getting {
+        val commonMain by getting
+        val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
-                api(project(":feature:saveable"))
-                api(project(":feature:obtainable"))
             }
         }
-        val androidMain by getting {
-            dependencies {
-                implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
-                implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
-                implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1")
-            }
-        }
+        val androidMain by getting
         val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
@@ -59,17 +47,10 @@ kotlin {
 }
 
 android {
-    namespace = "com.jstarczewski.kmm"
+    namespace = "com.jstarczewski.obtainable"
     compileSdk = 33
     defaultConfig {
-        minSdk = 21
+        minSdk = 24
         targetSdk = 33
     }
-}
-
-swiftTemplates {
-
-    outputDir = "../ios/ios/StateHolder"
-    sharedModuleName = "common"
-    coreLibraryExported = true
 }
