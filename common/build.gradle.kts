@@ -17,6 +17,7 @@ kotlin {
             baseName = "common"
             export(project(":feature:saveable"))
             export(project(":feature:obtainable"))
+            export("com.jstarczewski.kstate:kstate-core:0.0.3")
         }
     }
 
@@ -27,6 +28,7 @@ kotlin {
                 implementation(kotlin("test"))
                 api(project(":feature:saveable"))
                 api(project(":feature:obtainable"))
+                api("com.jstarczewski.kstate:kstate-core:0.0.3")
             }
         }
         val androidMain by getting {

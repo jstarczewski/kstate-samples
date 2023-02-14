@@ -1,7 +1,7 @@
 import Foundation
 import common
 
-class ObservableStateHolder<StateHolder>: ObservableObject where StateHolder: common.Kstate_coreStateHolder {
+class ObservableStateHolder<StateHolder>: ObservableObject where StateHolder: common.StateHolder {
 
     var stateHolder: StateHolder
 

@@ -3,7 +3,7 @@ import SwiftUI
 import common
 
 @propertyWrapper
-struct StateStateHolder<StateHolder>: DynamicProperty where StateHolder: common.Kstate_coreStateHolder {
+struct StateStateHolder<StateHolder>: DynamicProperty where StateHolder: common.StateHolder {
 
     @StateObject private var stateHolderObservable: ObservableStateHolder<StateHolder>
 
